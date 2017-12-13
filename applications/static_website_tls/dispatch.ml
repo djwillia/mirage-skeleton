@@ -91,7 +91,7 @@ struct
     in
     let http =
       Http_log.info (fun f -> f "listening on %d/TCP" http_port);
-      http tcp @@ D.serve (D.redirect https_port)
+      http tcp @@ D.serve (D.dispatcher data)
     in
     Lwt.join [ https; http ]
 
